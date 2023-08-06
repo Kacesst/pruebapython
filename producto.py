@@ -1,3 +1,4 @@
+import json
 class Producto:
     def __init__(self, nombre, precio, descripcion, categoria, color, talle, stock, foto, materiales, diseño, colaboracion_con=None):
         self.nombre = nombre

@@ -3,10 +3,10 @@ from producto import Producto
 
 
 class Cliente:
-    def __init__(self, nombre, apellido, correo, direccion, dni, telefono, contraseña, tarjeta_credito):
+    def __init__(self, nombre, apellido, email, direccion, dni, telefono, contraseña, tarjeta_credito):
         self.nombre = nombre
         self.apellido = apellido
-        self.correo = correo
+        self.email = email
         self.direccion = direccion
         self.dni = dni
         self.telefono = telefono

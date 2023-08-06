@@ -1,3 +1,36 @@
+import json
+from producto import Producto 
+from main import mostrar_galeria_productos
+
+
+def cargar_datos_json(nombre_archivo):
+    try:
+        with open(nombre_archivo, 'r') as archivo:
+            datos = json.load(archivo)
+        return datos
+    except FileNotFoundError:
+        return {}
+
+def guardar_datos_json(nombre_archivo, datos):
+    with open(nombre_archivo, 'w') as archivo:
+        json.dump(datos, archivo)
+
+class Carrito:
+    def __init__(self, nombre_archivo):
+        self.nombre_archivo = nombre_archivo
+        self.productos = cargar_datos_json(nombre_archivo)
+
+    def agregar_producto(self, producto, cantidad):
+        if producto in self.productos:
+            self.productos[producto] += cantidad
+        else:
+            self.productos[producto] = cantidad
+        self.guardar_carrito()
+
+    def eliminar_producto(self, producto):
+        if producto in self.productos:
+            del self.productos[producto]
+            self.guardar_carrito()
 
 def mostrar_menu_carrito(cliente):
     while True:
@@ -13,7 +46,7 @@ def mostrar_menu_carrito(cliente):
         if opcion == 1:
             mostrar_carrito_cliente(cliente)
         elif opcion == 2:
-            agregar_producto_al_carrito(cliente, productos)
+            agregar_producto_al_carrito(cliente, Producto)
         elif opcion == 3:
             eliminar_producto_del_carrito(cliente)
         elif opcion == 4:
@@ -46,6 +79,12 @@ def eliminar_producto_del_carrito(cliente):
     numero_producto = int(input("Ingrese el número de producto que desea eliminar del carrito: "))
     cliente.carrito.eliminar_producto(numero_producto)
     print("Producto eliminado del carrito.\n")
+    
+def obtener_total_carrito(self):
+        total = 0
+        for producto, cantidad in self.productos.items():
+            total += producto.precio * cantidad
+        return total
 
 def finalizar_compra(cliente):
     mostrar_carrito_cliente(cliente)

@@ -1,7 +1,9 @@
 import json
 from cliente import Cliente, registrar_usuario
 from producto import Producto, Zapatilla
-from carrito import Carrito
+from carrito import Carrito 
+
+
 
 remera1 = Producto("Remera Algodón", 25, "Remera cómoda y fresca", "Remeras", "Blanco", "M", 50, "foto_remera.jpg", "Algodón", "Estampado floral", "Colaboración X")
 pantalon1 = Producto("Pantalón Vaquero", 40, "Pantalón cómodo y resistente", "Pantalones", "Azul", "L", 30, "foto_pantalon.jpg", "Denim", "Estilo recto", "Colaboración Y")
@@ -20,7 +22,7 @@ cliente1 = Cliente("Juan", "Pérez", "juan@example.com", "Calle 123", "12345678"
 def mostrar_informacion_cliente(cliente):
     print("Información del cliente:")
     print(f"Nombre: {cliente.nombre} {cliente.apellido}")
-    print(f"Correo: {cliente.correo}")
+    print(f"Correo: {cliente.email}")
     print(f"Dirección: {cliente.direccion}")
     print(f"DNI: {cliente.dni}")
     print(f"Teléfono: {cliente.telefono}")
